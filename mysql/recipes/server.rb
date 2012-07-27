@@ -45,7 +45,7 @@ if platform?(%w{debian ubuntu})
     owner "root"
     group node['mysql']['root_group']
     mode "0600"
-    notifies :run, resources(:execute => "preseed mysql-server"), :immediately
+    #notifies :run, resources(:execute => "preseed mysql-server"), :immediately
   end
 
   template "#{node['mysql']['conf_dir']}/debian.cnf" do
@@ -125,7 +125,7 @@ unless platform?(%w{mac_os_x})
     owner "root" unless platform? 'windows'
     group node['mysql']['root_group'] unless platform? 'windows'
     mode "0644"
-    notifies :restart, resources(:service => "mysql"), :immediately
+    #notifies :restart, resources(:service => "mysql"), :immediately
     variables :skip_federated => skip_federated
   end
 end
